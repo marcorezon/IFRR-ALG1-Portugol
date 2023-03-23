@@ -1,0 +1,436 @@
+
+// Exercício 5 do componente: Algoritmo e Lógica de Programação I.
+
+programa
+{
+	
+	funcao inicio()
+	{
+		inteiro escolha1, escolha2, lado_a = 9
+		caracter resposta
+		
+		escreva("------JOGO-DO-CAMPONÊS------\n\n")
+		escreva("Um camponês possui um pequeno barco, que por sua simplicidade não pode carregar muito peso. Junto com o camponês estão: um lobo, uma ovelha e uma bola de couve. O camponês precisa, somente com seu pequeno barco, mover o couve e os animais do lado A para o lado B do rio.\n\n")
+
+		escreva("As regras são as seguintes:\nRegra 1: O camponês só pode levar no barco consigo um de cada vez para viajar entre as margens do rio, ou o camponês leva o couve ou o lobo ou a ovelha.\nRegra 2: Se a ovelha ficar sozinha com o lobo a ovelha será devorada e o jogo será perdido.\nRegra 3: Se a ovelha ficar sozinha com o couve, o couve será devorado e o jogo será perdido.\n")
+		escreva("\nVocê deseja jogar? (S/N): ")
+		leia(resposta)
+
+		//Looping de segurança.
+		enquanto ((resposta != 'S') e (resposta != 's') e (resposta != 'N') e (resposta != 'n'))
+		{
+			limpa()
+			escreva("\nPara respoder SIM você pode utilizar os caracteres S ou s, para responder NÅO, você pode utilizar os caracteres N ou n\n") 
+			escreva("Por favor, responda novamente: ")
+			leia (resposta)
+		}
+
+		//Fechamento do programa caso o usuário não o queira jogar.
+		se ((resposta == 'N') ou (resposta == 'n'))
+		{
+			escreva("\nO jogo está sendo encerrado...\n")
+			retorne 
+		}
+
+		
+		escreva("\nOk, vamos começar...\n")
+
+		//Looping primário, aqui todos estão no lado A. OVELHA = 2, COUVE = 3, LOBO = 4.
+		enquanto (lado_a == 9) 
+		{
+			escreva("No lado A estão: a ovelha o lobo e o couve.\n* Para levar a ovelha para o lado B digite 1.\n* Para levar o couve para o lado B digite 2.\n* Para levar o lobo para o lado B digite 3.\nDigite o valor escolhido: ")
+			leia(escolha1)
+
+			//Looping de segurança.
+			enquanto ((escolha1 < 1) ou (escolha1 > 3))
+			{
+				escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+				leia(escolha1)
+				limpa()
+			}
+
+			//Verificação das regras 2 e 3.
+			escolha (escolha1)
+			{
+				caso 1:
+					lado_a = lado_a - 2
+					escreva("\nA ovelha está sendo levada para o lado B...\n\n")
+					pare
+	
+				caso 2:
+					escreva("\n\nGAME OVER\n\nA ovelha foi devorada pelo lobo.\n")	
+					retorne
+				
+				caso 3:
+					escreva("\n\nGAME OVER\n\nO couve foi devorado pela ovelha.\n")
+					retorne
+				
+			}
+		
+			//Opções para o camponês, voltar com ou sem a ovelha.
+			escreva("Agora no lado B, o camponês tem duas opções: \n* Para levar de volta a ovelha do lado B para o A digite 1.\n* Para o camponês ir para o lado A digite 2.\nDigite o valor escolhido: ")
+			leia(escolha1)
+	
+			//Decisão do camponês.
+			se (escolha1 == 1)
+			{
+				lado_a = lado_a + 2
+				limpa()
+				escreva("\nA ovelha está sendo levada para o lado A...\n")
+				
+				
+			}
+			senao
+			{
+				escreva("\nO camponês está retornando para o lado A...\n\n")
+			}
+
+			//Início do lopping secundário, aqui a ovelha está em B.
+			enquanto (lado_a == 7)
+			{
+				escreva("Retornando ao lado A do rio o camponês tem, agora, três opções:\n* Para levar o couve para o lado B digite 1.\n* Para levar o Lobo para o lado B digite 2.\n* Para retornar ao lado B digite 3.\nDigite o valor escolhido: ")
+				leia (escolha1)
+				
+				//Looping de segurança.
+				enquanto ((escolha1 < 1) ou (escolha1 > 3))
+				{
+					 escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+					 leia(escolha1)
+					 limpa()
+				}
+
+				//Verificação de escolha para levar o lobo ou o couve e retornar ao lado B.
+				escolha (escolha1)
+				{
+					caso 1:
+						lado_a = lado_a - 3
+						escreva("\nAgora somente o lobo está no lado A\n")
+						escreva("\nAgora no lado B com a ovelha e o couve o camponês tem três opções:\n* Para levar o couve para o lado A  digite 1.\n* Para levar a ovelha para o lado A digite 2.\nPara retornar ao lado A digite 3.\nDigite o valor escolhido: ")
+						leia(escolha1)
+
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 3))
+						{
+							escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+							leia(escolha1)
+							limpa()
+						}
+						escolha (escolha1)
+						{
+							caso 1:
+								lado_a = lado_a + 3
+								escreva("\nO couve está sendo levado para o lado A...\n\n")
+								pare
+							
+							caso 2: 
+								lado_a = lado_a + 2
+								escreva("\nA ovelha está sendo levada para o lado A...\n\n")
+								pare
+							
+							caso 3:
+								escreva("\n\nGAME OVER\n\nO couve foi devorado pela ovelha.\n")
+								retorne
+						}
+						pare
+						
+			
+					caso 2:
+						lado_a = lado_a - 4
+						escreva("\nAgora somente o couve está do lado A\n")
+						escreva("\nAgora no lado B camponês tem três opções:\n* Para retornar para o lado A deixando a ovelha e o lobo digite 1.\n* Para escolher entre levar a ovelha ou lobo para o lado A novamente digite 2.\nDigite o valor escolhido: ")
+						leia(escolha1)
+						
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 2))
+						{
+							escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+							leia(escolha1)
+							limpa()
+						}
+						
+						//Verificação da regra 2.
+						se (escolha1 == 1)
+						{
+							escreva("\n\nGAME OVER\n\nA ovelha foi devorada pelo lobo.\n")
+							retorne
+						}
+						pare
+
+					caso 3:
+						escreva("\nRetornando ao lado B o camponês tem duas opções:\n* Para levar a ovelha para o lado A digite 1.\n* Para retornar ao lado A digite 2.\nDigite o valor escolhido: ")
+						leia(escolha1)
+
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 2))
+							{
+								escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+								leia(escolha1)
+								limpa()
+							}
+							
+						se (escolha1 == 1)
+						{
+							lado_a = lado_a + 2
+							escreva("\nA ovelha está sendo levada novamente para o lado A...\n")
+						}
+						senao
+						{
+							escreva("\nO camponês está retornando para o lado A...\n")
+						}
+						pare
+				
+				}
+
+				//Início do looping terceário. Aqui a ovelha e mais algum devem estar do lado B.
+				enquanto (lado_a < 7) 
+				{				
+					
+					//Este se é acionado se o couve e a ovelha estiverem junto com o camponês no lado B e o camponês escolheu levar ao lado A um dos dois.
+					se (lado_a == 4)
+					{
+						escreva("\nAinda no lado B o camponês tem 3 opções:\n* Para levar o couve novamente para o lado A digite 1.\n* Para levar a ovelha novamente para o lado A digite 2.\n* Para retornar ao lado A digite 3.\nDigite o valor escolhido: ")
+						leia(escolha1)
+	
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 3))
+							{
+								escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+								leia(escolha1)
+								limpa()
+							}
+						escolha (escolha1)
+						{
+							caso 1:
+								//lado_a == 7.
+								lado_a = lado_a + 3
+								escreva("\nO couve está sendo levado para o lado A...\n\n")
+								pare
+							caso 2:
+								//lado_a == 6.
+								lado_a = lado_a + 2
+								escreva("\nA ovelha está sendo levada para o lado A...\n\n")
+								pare
+
+							//Verificação da regra 3.
+							caso 3:
+								escreva("\n\nGAME OVER\n\nO couve foi devorado pela ovelha.\n\n")
+								retorne
+				
+						}
+					
+					}
+	
+					//Este se é acionado se o lobo e a ovelha estiverem junto com o camponês no lado B e o camponês escolheu levar ao lado A um dos dois.
+					se (lado_a == 3)
+					{
+						escreva("\nNo lado B, o camponês tem três opções:\n* Para levar o lobo novamente para o lado A digite 1.\n* Para levar a ovelha novamente para o lado A digite 2.\n* Para retornar ao lado A digite 3.\nDigite o valor escolhido: ")
+						leia(escolha1)
+						
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 3))
+							{
+								escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+								leia(escolha1)
+								limpa()
+							}
+						escolha (escolha1)
+						{
+							caso 1:
+								//lado_a == 6.
+								lado_a = lado_a + 4
+								pare
+							caso 2:
+								//lado_a == 5.
+								lado_a = lado_a + 2
+								pare
+							caso 3:
+								//Verificação da regra 2.
+								escreva("\n\nGAME OVER\n\nA ovelha foi devorada pelo lobo.\n\n")
+								retorne
+								
+						}
+						
+					}
+					
+					//Aqui a estrutura é outra, aqui entende-se que a ovelha retorna ao lado A.
+					//Este se é acionado se a ovelha e o lobo estiverem do lado A.
+					se (lado_a == 6)
+					{
+						escreva("\nAgora retornando para o lado A, o camponês tem três opções:\n* Para levar o lobo para o lado B digite 1.\n* Para levar a ovelha para o lado B digite 2.\n* Para retornar ao lado B digite 3.\nDigite o valor escolhido: ")
+						leia(escolha1)
+
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 3))
+						{
+							escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+							leia(escolha1)
+							limpa()
+						}
+						
+						escolha (escolha1)
+						{
+							caso 1:
+								lado_a = lado_a - 4 //lado_a == 2.
+								escreva("\nO lobo está sendo levado para o lado B...\n\n")
+								escreva("Agora no lado B, o camponês tem 3 opções:\n* Para levar o couve para o lado A digite 1.\n* Para levar o lobo para o lado A digite 2.\n* Para retornar ao lado A digite 3.\nDigite o valor escolhido: ")
+								leia(escolha1)
+								escolha(escolha1)
+								{
+									caso 1:
+										lado_a = lado_a + 3 //lado_a == 5 (Ovelha e couve do lado A).
+										escreva("\nO camponês está levando o couve para o lado A...\n\n")
+										pare
+									
+									caso 2:
+										lado_a = lado_a + 4 //lado_a = 6 (Ovelha e lobo do lado A).
+										escreva("\nO camponês está levando o lobo para o lado A...\n\n")
+										pare
+									
+									caso 3: 
+										//lado_a == 2.
+										escreva("\nO camponês está retornando para o lado A...\n\n")
+										pare
+								}
+								pare
+								
+							caso 2:
+								lado_a = lado_a - 2
+								escreva("\nA ovelha está sendo levada para o lado B...\n\n")
+								pare
+							
+							//Verificação da regra 2.
+							caso 3:
+							escreva("\n\nGAME OVER\n\nA ovelha foi devorada pelo lobo.\n\n")	
+							retorne
+							
+						}
+					}
+					
+					//Este se é acionado se a ovelha e o couve estiverem do lado A.
+					se (lado_a == 5) 
+					{
+						escreva("Agora retornando para o lado A, o camponês tem três opções:\n* Para levar o couve para o lado B digite 1.\n* Para levar a ovelha para o lado B digite 2.\n* Para retornar ao lado B digite 3.\nDigite o valor escolhido: ")
+						leia(escolha1)
+
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 3))
+						{
+							escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+							leia(escolha1)
+							limpa()
+						}
+
+						escolha (escolha1)
+						{
+							caso 1:
+								lado_a = lado_a - 3 //lado_a == 2 (só a ovelha fica).
+								escreva("\nO couve está sendo levado para o lado B...\n\n")
+								escreva("Agora no lado B, o camponês tem 3 opções:\n* Para levar o couve para o lado A digite 1.\n* Para levar o lobo para o lado A digite 2.\n* Para retonar ao lado A digite 3.\nDigite o valor escolhido: ")
+								leia(escolha1)
+
+								//Looping de segurança.
+								enquanto ((escolha1 < 1) ou (escolha1 > 3))
+								{
+									escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+									leia(escolha1)
+									limpa()
+								}
+
+								escolha (escolha1)
+								{
+									caso 1:
+										lado_a = lado_a + 3 //lado_a == 5.
+										escreva("\nO couve está sendo levado para o lado A...\n\n")
+										pare
+									
+									caso 2:
+										lado_a = lado_a + 4 //lado_a == 6.
+										escreva("\nO lobo está sendo levado para o lado A...\n\n")
+										pare
+										
+									caso 3:
+										escreva("\nO camponês está indo para o lado A...\n\n")
+										pare
+								}
+								
+								pare
+							
+							caso 2:
+								lado_a = lado_a - 2 //lado_a == 3 (só o couve fica).
+								escreva("\nA ovelha está sendo levada para o lado B...\n\n")
+								pare
+								
+							//Verificação da regra 3.
+							caso 3:
+							escreva("\n\nGAME OVER\n\nO couve foi devorado pela ovelha.\n\n")	
+							retorne
+							
+						}
+						
+					}
+					//Início do looping quaternário. Aqui somente a ovelha está em A.
+					enquanto(lado_a == 2)
+					{
+						escreva("Novamente no lado A, o camponês tem duas opções:\n* Para levar a ovelha para o lado B digite 1.\n* Para ir para o lado B digite 2.\nDigite o valor escolhido: ")
+						leia(escolha1)
+
+						//Looping de segurança.
+						enquanto ((escolha1 < 1) ou (escolha1 > 2))
+						{
+							escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+							leia(escolha1)
+							limpa()
+						}
+
+						se (escolha1 == 1)
+						{
+							escreva("\n\n_________PARABENS__VOCÊ__CONSEGUIU_________\n\n")
+							retorne
+						}
+						senao
+						{
+							escreva("\nO camponês está retornando para o lado B...\n\n")
+							escreva("No lado B, o camponês tem 3 opções:\n* Para levar o couve para o lado A digite 1.\n* Para levar o lobo para o lado A digite 2.\nPara retornar ao lado A digite 3.\n Digite o valor escolhido: ")
+							leia(escolha1)
+
+							//Looping de segurança.
+							enquanto ((escolha1 < 1) ou (escolha1 > 3))
+							{
+								escreva("\nValor de escolha indisponível, por favor, digite novamente: ")
+								leia(escolha1)
+								limpa()
+							}
+							
+							escolha (escolha1)
+							{
+								caso 1:
+									//lado_a == 5.
+									lado_a = lado_a + 3
+									escreva("\nO couve está sendo levado para o lado A...\n\n")
+									pare
+								
+								caso 2: 	
+									//lado_a == 6.
+									lado_a = lado_a + 4 
+									escreva("\nO lobo está sendo levado para o lado A...\n\n")
+									pare
+								
+								caso 3:
+									escreva("\nO camponês está retornando para o lado A...\n\n")
+									pare
+									
+							}
+		
+						}
+					//Aqui abaixo está o fim do looping quaternário(4).
+					}
+				//Aqui abaixo está o fim do looping terceário (3).	
+				}
+			//Aqui abaixo está o fim do looping secundário (2).
+			}
+		//Aqui abaixo está o fim do looping primário (1).	
+		}
+	//Aqui abaixo está o fim da função principal.
+	}
+//Aqui abaixo está o fim do programa.
+}
