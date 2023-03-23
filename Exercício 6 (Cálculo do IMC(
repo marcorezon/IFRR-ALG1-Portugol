@@ -1,0 +1,75 @@
+
+// Exercício 6 do componente: Algoritmo e Lógica de Programação I.
+
+programa
+{
+	
+	funcao inicio()
+	{
+		inteiro peso 
+		real altura, IMC
+		
+		escreva("\n\n______CALCULADORA_DE_IMC______\n\n")
+		
+		//Leitura do peso.
+		escreva("Digite um valor, em kilos, para o peso: ")
+		leia(peso)
+
+		//Algoritmo para limitar valores da variável peso e evitar bugs.
+		enquanto ((peso < 0) ou (peso > 200))
+		{
+			escreva("\n********Valor-fora-dos-padrões-para-cálculo********\n\nPor favor digite, em Kilos, um valor para o peso: ")
+			leia(peso)
+			limpa()
+
+		}	
+		
+		//Leitura da altura.
+		escreva("Digite um valor, em metros, para altura (utilize . para casas decimais): ")	
+		leia(altura)
+
+		//Algoritmo para limitar valores da variável altura evitar bugs.
+		enquanto ((altura < 0.2) ou (altura > 2.6))
+		{
+			escreva("\n********Valor-fora-dos-padrões-para-cálculo********\n\nPor favor digite, em metros, um valor para a altura (utilize . para casas decimais): ")
+			leia(altura)
+			limpa()
+		}
+		//Cálculo do IMC.
+		IMC = peso/(altura * altura)
+
+		escreva("Situação: ")
+		
+		//Controle condicional para verificação relacional e lógica do IMC.
+		se (IMC < 18.5) 
+		{
+			escreva("Abaixo do peso\n")
+			retorne
+		}
+		se ((IMC >= 18.5) e (IMC <= 24.9)) 
+		{
+			escreva("Peso normal\n") 
+			retorne
+		}
+		se ((IMC >= 25) e (IMC <= 29.9 ))
+		{
+			escreva("Sobrepeso\n")
+			retorne
+		}
+		se ((IMC >= 30) e (IMC <= 34.9))
+		{
+			escreva("Obesidade grau 1\n")
+			retorne
+		}
+		se ((IMC >= 35) e (IMC <= 39))
+		{
+			escreva("Obesidade grau 2\n")
+			retorne
+		}
+		se (IMC > 40)
+		{
+			escreva("Obesidade grau 3\n")
+			retorne
+		}
+	}
+}
