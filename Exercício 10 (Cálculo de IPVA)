@@ -1,0 +1,51 @@
+
+// Exercício 10 do componente: Algoritmo e Lógica de Programação I.
+
+programa
+{
+	
+	funcao inicio()
+	{
+		const real aliquota1 = 0.03, aliquota2 = 0.02, aliquota3 = 0.02
+		inteiro tipo, valor
+
+		//Leitura do tipo de veículo.
+		escreva("\nCálculo de IPVA\n")
+		escreva("\n1 - Carro particular e de passeio.\n2 - Caminhonete e utilitários.\n3 - Motocicletas e quadriciclos.\n\nDigite o tipo de veículo para o cálcula de IPVA: ")
+		leia(tipo)
+
+		//Controle dos valores permitidos na escolha.
+		enquanto ((tipo < 1) ou (tipo > 3)) 
+		{
+			escreva("\nResposta inválida.\n")
+			escreva("\n1 - Carro particular e passeio.\n2 - Caminhonete e utilitários.\n3 - Motocicletas e quadriciclos.\n\nDigite o novamente tipo de veículo para o cálcula de IPVA: ")
+			leia(tipo)
+		}
+
+		//Limpeza do console.
+		limpa()
+
+		//Leitura do valor estimado do veículo.
+		escreva("\n\nDigite o valor estimado do veículo: ")
+		leia(valor)
+		
+		 escreva("\nCalculando...\n")
+
+		//Controle condicional para cálculdo do IPVA.
+		escolha (tipo)
+		{
+			 caso 1:
+			 	escreva("\nO valor do IPVA: ",(valor * aliquota1)," R$. Calculo baseado na alíquota de 3% para carros particulares e de passeio.\n")
+			 	pare
+			 	
+			 caso 2:
+				escreva("\nO valor do IPVA: ",(valor * aliquota2)," R$. Calculo baseado na alíquota de 2% para caminhonetes e utilitários.\n")
+			 	pare
+			 
+			 caso 3:
+				escreva("\nO valor do IPVA: ",(valor * aliquota3)," R$. Calculo baseado na alíquota de 2% para motocicletas e quadriciclos.\n")
+				pare
+		}
+
+	}
+}
