@@ -1,0 +1,29 @@
+
+// Código simples, possui alguns problemas, como por exemplo para um funcionário que não trabalha aos fins de semana, cabe um algoritmo mais complexo para um cálculo equivalente e correto sobre o valor por hora trabalhada. 
+// Exercício 7 do componente: Algoritmo e Lógica de Programação I.
+
+programa
+{
+	
+	funcao inicio()
+	{
+		cadeia nome
+		inteiro horas_trabalhadas
+		real salario, valor_por_hora_trabalhada
+
+		escreva("\n\nCALCULADORA DE SALÁRIO\n\n")
+		
+		escreva("* Digite o seu nome: ")
+		leia(nome)
+
+		escreva("\n* Digite o valor do seu salário: ")
+		leia(salario)
+
+		escreva("\n* Digite quantas horas você trabalha por dia: ")
+		leia(horas_trabalhadas)
+		
+		valor_por_hora_trabalhada = (salario / (horas_trabalhadas * 30 ) ) 
+
+		escreva("\n",nome,", o valor por hora trabalhada é próximo a: ",valor_por_hora_trabalhada,"R$.\n\n-Cálculo realizado com base no mês de 30 dias.\n")
+	}
+}
