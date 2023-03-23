@@ -1,0 +1,74 @@
+
+// Exercício 8 do componente: Algoritmo e Lógica de Programação I.
+
+programa
+{
+	
+	funcao inicio()
+	{
+		caracter resposta, resposta1, resposta2, resposta3
+
+		//Apresentação do programa.
+		escreva("\n\n-----JOGO-QUIZ-----\n\n-O Jogo Quiz funciona da seguinte forma:\n* O jogo te apresentará 3 afirmações e você responderá se considera tais afirmações verdadeiras ou falsas.\n* Ao fim o jogo te apresentará o gabarito\n")
+		escreva("Você deseja jogar? (S/N): ")
+		leia (resposta)
+
+		//Organização da resposta.
+		enquanto ((resposta != 'S') e (resposta != 's') e (resposta != 'N') e (resposta != 'n'))
+		{
+			escreva("\n!RESPOSTA INVÁLIDA!\nPara responder SIM, você pode utilizar os caracteres S e s, para responder NÅO você pode utilizar os caracteres N e n.\nPor favor responda novamente: ")
+			leia(resposta)
+	
+		}
+
+		//Encerramento caso a resposta seja NÅO.
+		se ((resposta == 'N') ou (resposta == 'n'))
+		{ 
+			escreva("\nO joga está sendo encerrado...\n")
+			retorne
+		}
+
+		//Caso a resposta seja SIM.
+
+		escreva("\nOk, vamos lá...\n* Utilize V para verdeiro e F para falso.\n")
+
+			//Início das afirmações, identação colocada para destacar a região de código em que ficam as afirmações.
+			
+			escreva("\n- Primeira afirmação: \"O vaticano é um país.\".\nDigite sua resposta (V/F): ")
+			leia (resposta1)
+			
+			//Organização da resposta.
+			enquanto ((resposta1 != 'V') e (resposta1 != 'v') e (resposta1 != 'F') e (resposta1 != 'f'))
+			{
+				escreva("\n!RESPOSTA INVÁLIDA!\nPara responder VERDADEIRO, você pode utilizar os caracteres V e v, para responder FALSO você pode utilizar os caracteres F e f.\nPor favor responda novamente: ")
+				leia(resposta1)
+		
+			}
+	
+			escreva("\n- Segunda afirmação: \"A terra é plana.\" .\nDigite sua resposta (V/F): ") 
+			leia(resposta2)
+
+			//Organização da resposta.
+			enquanto ((resposta2 != 'V') e (resposta2 != 'v') e (resposta2 != 'F') e (resposta2 != 'f'))
+			{
+				escreva("\n!RESPOSTA INVÁLIDA!\nPara responder VERDADEIRO, você pode utilizar os caracteres V e v, para responder FALSO você pode utilizar os caracteres F e f.\nPor favor responda novamente: ")
+				leia(resposta2)
+				
+			}
+	
+			escreva("\n- Terceira afirmação: \"O sistema solar tem 8 planetas.\" .\nDigite sua resposta (V/F): ")
+			leia(resposta3)
+
+			//Organização da resposta.
+			enquanto ((resposta3 != 'V') e (resposta3 != 'v') e (resposta3 != 'F') e (resposta3 != 'f'))
+			{
+				escreva("\n!RESPOSTA INVÁLIDA!\nPara responder VERDADEIRO, você pode utilizar os caracteres V e v, para responder FALSO você pode utilizar os caracteres F e f.\nPor favor responda novamente: ")
+				leia(resposta3)
+				
+			}
+		
+		//Apresentação do gabarito e respostas.
+		escreva("\nO gabarito é: V, F, V.\nSuas respostas foram ",resposta1,", ",resposta2,", ",resposta3,".\n")
+			
+	}
+}
